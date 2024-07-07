@@ -5,6 +5,7 @@ ClipCentauri
 Welcome to ClipCentauri – your ultimate clipboard manager that allows you to store and access up to 100 clipboard items effortlessly. With a stylish interface and powerful features, ClipCentauri ensures you never lose track of your copied content.
 
 
+
 Features
 
 Store Up to 100 Items: Keep a history of your last 100 copied items.
@@ -16,11 +17,13 @@ Star Items: Mark important clipboard entries to keep them at the top of your lis
 User-Friendly Interface: An intuitive design for easy navigation and item management.
 
 
+
 Installation
 
 Download the Installer
 
 Download the latest version of the ClipCentauri installer from the releases page.
+
 
 
 Run the Installer
@@ -31,11 +34,13 @@ Double-click the downloaded file to start the installation process.
 Follow the on-screen instructions to complete the installation.
 
 
+
 Launch ClipCentauri
 
 Open ClipCentauri from the Start menu or desktop shortcut.
 
 Grant necessary permissions if prompted.
+
 
 
 Usage
@@ -60,6 +65,7 @@ Copy Items
 Click on any item in the clipboard history to copy it back to your clipboard.
 
 
+
 Settings and Customization
 
 Open Settings
@@ -67,6 +73,7 @@ Open Settings
 Click on the settings icon in the main interface.
 
 Customize your clipboard history preferences and appearance.
+
 
 
 Contributing
@@ -102,9 +109,11 @@ Submit a Pull Request
 Open a pull request on GitHub and provide a detailed description of your changes.
 
 
+
 License
 
 This project is licensed under the MIT License. See the LICENSE file for details.
+
 
 
 Contact
