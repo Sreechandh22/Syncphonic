@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using System.Windows;
 using System.Windows.Interop;
 
@@ -13,6 +14,7 @@ namespace ClipboardManager.Helpers
             var window = new Window();
             var hwndSource = HwndSource.FromHwnd(new WindowInteropHelper(window).Handle);
             hwndSource.AddHook(WndProc);
+            Debug.WriteLine("ClipboardNotification initialized.");
         }
 
         private IntPtr WndProc(IntPtr hwnd, int msg, IntPtr wParam, IntPtr lParam, ref bool handled)
@@ -21,6 +23,7 @@ namespace ClipboardManager.Helpers
 
             if (msg == WM_CLIPBOARDUPDATE)
             {
+                Debug.WriteLine("Clipboard content changed.");
                 OnClipboardChanged();
             }
 

@@ -1,5 +1,5 @@
-using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using ClipboardManager.Database;
 
 namespace ClipboardManager
@@ -13,14 +13,14 @@ namespace ClipboardManager
             _clipboardDatabase = new ClipboardDatabase(connectionString);
         }
 
-        public void AddClipboardItem(string content)
+        public async Task AddClipboardItemAsync(string content)
         {
-            _clipboardDatabase.AddClipboardItem(content);
+            await _clipboardDatabase.AddClipboardItemAsync(content);
         }
 
-        public List<ClipboardItemModel> GetClipboardItems()
+        public async Task<List<ClipboardItemModel>> GetClipboardItemsAsync()
         {
-            return _clipboardDatabase.GetClipboardItems();
+            return await _clipboardDatabase.GetClipboardItemsAsync();
         }
     }
 }
