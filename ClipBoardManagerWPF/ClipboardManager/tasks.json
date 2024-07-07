@@ -1,0 +1,32 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+      {
+        "label": "build",
+        "command": "dotnet",
+        "type": "process",
+        "args": [
+          "build",
+          "${workspaceFolder}/ClipboardManager.sln"
+        ],
+        "problemMatcher": "$msCompile"
+      },
+      {
+        "label": "run",
+        "command": "dotnet",
+        "type": "process",
+        "args": [
+          "run",
+          "--project",
+          "${workspaceFolder}/ClipBoardManagerWPF/ClipboardManager"
+        ],
+        "problemMatcher": "$msCompile",
+        "group": {
+          "kind": "build",
+          "isDefault": true
+        },
+        "dependsOn": "build"
+      }
+    ]
+  }
+  
