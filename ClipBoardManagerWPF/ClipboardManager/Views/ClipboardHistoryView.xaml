@@ -1,17 +1,18 @@
-<UserControl x:Class="ClipboardManager.Views.ClipboardHistoryView"
-             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
-             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
-    <StackPanel>
-        <ItemsControl ItemsSource="{Binding ClipboardItems}">
-            <ItemsControl.ItemTemplate>
+<Window x:Class="ClipboardManager.Views.ClipboardHistoryView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Clipboard History" Height="350" Width="525">
+    <Grid>
+        <ListBox ItemsSource="{Binding ClipboardItems}">
+            <ListBox.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Text="{Binding Content}" Width="200"/>
-                        <Button Content="Star" Command="{Binding DataContext.StarItemCommand, RelativeSource={RelativeSource AncestorType=UserControl}}" CommandParameter="{Binding}"/>
+                        <TextBlock Text="{Binding Content}" Width="400"/>
+                        <Button Content="Pin" Command="{Binding DataContext.PinCommand, RelativeSource={RelativeSource AncestorType=ListBox}}"
+                                CommandParameter="{Binding}"/>
                     </StackPanel>
                 </DataTemplate>
-            </ItemsControl.ItemTemplate>
-        </ItemsControl>
-        <Button Content="Load More" Command="{Binding LoadMoreCommand}"/>
-    </StackPanel>
-</UserControl>
+            </ListBox.ItemTemplate>
+        </ListBox>
+    </Grid>
+</Window>

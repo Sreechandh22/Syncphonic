@@ -1,51 +1,42 @@
-using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Windows.Input;
-using ClipboardManager.Helpers;
+using ClipboardManager.Database;
 
 namespace ClipboardManager.ViewModels
 {
-    public class ClipboardHistoryViewModel : INotifyPropertyChanged
+    public class ClipboardItemViewModel : INotifyPropertyChanged
     {
-        private readonly ClipboardService _clipboardService;
-        public ObservableCollection<ClipboardItem> ClipboardItems { get; set; } = new ObservableCollection<ClipboardItem>();
+        private ClipboardItemModel _clipboardItem;
 
-        public ICommand StarItemCommand { get; }
-        public ICommand LoadMoreCommand { get; }
-
-        public ClipboardHistoryViewModel()
+        public ClipboardItemViewModel(ClipboardItemModel clipboardItem)
         {
-            _clipboardService = new ClipboardService();
-            LoadClipboardHistory();
-
-            StarItemCommand = new RelayCommand(StarItem);
-            LoadMoreCommand = new RelayCommand(LoadMore);
+            _clipboardItem = clipboardItem;
         }
 
-        private void LoadClipboardHistory()
+        public int Id => _clipboardItem.Id;
+        public string Content => _clipboardItem.Content;
+        public bool Pinned
         {
-            ClipboardItems.Clear();
-            var items = _clipboardService.GetClipboardHistory();
-            foreach (var item in items)
+            get => _clipboardItem.Pinned;
+            set
             {
-                ClipboardItems.Add(item);
+                if (_clipboardItem.Pinned != value)
+                {
+                    _clipboardItem.Pinned = value;
+                    OnPropertyChanged(nameof(Pinned));
+                }
             }
-        }
-
-        private void StarItem(object parameter)
-        {
-            if (parameter is ClipboardItem item)
-            {
-                _clipboardService.StarItem(item.Id);
-                LoadClipboardHistory();
-            }
-        }
-
-        private void LoadMore(object parameter)
-        {
-            // Implement logic to load more items if required
         }
 
         public event PropertyChangedEventHandler PropertyChanged;
+
+        protected virtual void OnPropertyChanged(string propertyName)
+        {
+            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        public ClipboardItemModel ToModel()
+        {
+            return _clipboardItem;
+        }
     }
 }

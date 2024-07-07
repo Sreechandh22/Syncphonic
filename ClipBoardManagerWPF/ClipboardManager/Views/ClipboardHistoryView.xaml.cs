@@ -1,13 +1,13 @@
-using System.Windows.Controls;
+using System.Windows;
 
 namespace ClipboardManager.Views
 {
-    public partial class ClipboardHistoryView : UserControl
+    public partial class ClipboardHistoryView : Window
     {
         public ClipboardHistoryView()
         {
             InitializeComponent();
-            DataContext = new ClipboardHistoryViewModel();
+            DataContext = new ViewModels.ClipboardHistoryViewModel();
         }
     }
 }

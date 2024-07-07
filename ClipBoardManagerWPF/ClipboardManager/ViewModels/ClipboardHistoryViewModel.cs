@@ -1,51 +1,41 @@
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.Windows.Input;
+using ClipboardManager.Database;
 using ClipboardManager.Helpers;
 
 namespace ClipboardManager.ViewModels
 {
-    public class ClipboardHistoryViewModel : INotifyPropertyChanged
+    public class ClipboardHistoryViewModel
     {
-        private readonly ClipboardService _clipboardService;
-        public ObservableCollection<ClipboardItem> ClipboardItems { get; set; } = new ObservableCollection<ClipboardItem>();
-
-        public ICommand StarItemCommand { get; }
-        public ICommand LoadMoreCommand { get; }
+        private readonly ClipboardDatabase _clipboardDatabase;
+        public ObservableCollection<ClipboardItemViewModel> ClipboardItems { get; set; }
+        public RelayCommand PinCommand { get; set; }
 
         public ClipboardHistoryViewModel()
         {
-            _clipboardService = new ClipboardService();
+            _clipboardDatabase = new ClipboardDatabase("ClipboardDatabase.db");
+            ClipboardItems = new ObservableCollection<ClipboardItemViewModel>();
+
             LoadClipboardHistory();
 
-            StarItemCommand = new RelayCommand(StarItem);
-            LoadMoreCommand = new RelayCommand(LoadMore);
+            PinCommand = new RelayCommand(OnPinItem);
         }
 
         private void LoadClipboardHistory()
         {
-            ClipboardItems.Clear();
-            var items = _clipboardService.GetClipboardHistory();
+            var items = _clipboardDatabase.GetClipboardItems();
             foreach (var item in items)
             {
-                ClipboardItems.Add(item);
+                ClipboardItems.Add(new ClipboardItemViewModel(item));
             }
         }
 
-        private void StarItem(object parameter)
+        private void OnPinItem(object parameter)
         {
-            if (parameter is ClipboardItem item)
+            if (parameter is ClipboardItemViewModel item)
             {
-                _clipboardService.StarItem(item.Id);
-                LoadClipboardHistory();
+                item.Pinned = !item.Pinned;
+                _clipboardDatabase.UpdateClipboardItem(item.ToModel());
             }
         }
-
-        private void LoadMore(object parameter)
-        {
-            // Implement logic to load more items if required
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
     }
 }

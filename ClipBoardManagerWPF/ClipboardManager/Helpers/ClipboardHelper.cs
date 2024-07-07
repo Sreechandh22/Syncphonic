@@ -4,16 +4,18 @@ namespace ClipboardManager.Helpers
 {
     public static class ClipboardHelper
     {
-        public static void SetText(string text)
+        public static string GetClipboardText()
+        {
+            if (Clipboard.ContainsText())
+            {
+                return Clipboard.GetText();
+            }
+            return string.Empty;
+        }
+
+        public static void SetClipboardText(string text)
         {
             Clipboard.SetText(text);
         }
-
-        public static string GetText()
-        {
-            return Clipboard.ContainsText() ? Clipboard.GetText() : string.Empty;
-        }
-
-        // Additional helper methods
     }
 }

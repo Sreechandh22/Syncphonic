@@ -3,20 +3,37 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.0.31903.59
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClipboardManager", "ClipboardManager\ClipboardManager.csproj", "{2C561BD8-4CBA-4C0A-BE93-AED0F2A829D9}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "ClipBoardManagerWPF", "ClipBoardManagerWPF", "{6D017F5D-FBB3-45F2-96F7-26C420058998}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ClipboardManager", "ClipBoardManagerWPF\ClipboardManager\ClipboardManager.csproj", "{182A73FA-CF43-4B10-9072-F2EC18C6368C}"
 EndProject
 Global
-	GlobalSection(SolutionConfigurationPlatforms) = preSolution
-		Debug|Any CPU = Debug|Any CPU
-		Release|Any CPU = Release|Any CPU
-	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Debug|x64 = Debug|x64
+		Debug|x86 = Debug|x86
+		Release|Any CPU = Release|Any CPU
+		Release|x64 = Release|x64
+		Release|x86 = Release|x86
+	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{2C561BD8-4CBA-4C0A-BE93-AED0F2A829D9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{2C561BD8-4CBA-4C0A-BE93-AED0F2A829D9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{2C561BD8-4CBA-4C0A-BE93-AED0F2A829D9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{2C561BD8-4CBA-4C0A-BE93-AED0F2A829D9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{182A73FA-CF43-4B10-9072-F2EC18C6368C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{182A73FA-CF43-4B10-9072-F2EC18C6368C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{182A73FA-CF43-4B10-9072-F2EC18C6368C}.Debug|x64.ActiveCfg = Debug|Any CPU
+		{182A73FA-CF43-4B10-9072-F2EC18C6368C}.Debug|x64.Build.0 = Debug|Any CPU
+		{182A73FA-CF43-4B10-9072-F2EC18C6368C}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{182A73FA-CF43-4B10-9072-F2EC18C6368C}.Debug|x86.Build.0 = Debug|Any CPU
+		{182A73FA-CF43-4B10-9072-F2EC18C6368C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{182A73FA-CF43-4B10-9072-F2EC18C6368C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{182A73FA-CF43-4B10-9072-F2EC18C6368C}.Release|x64.ActiveCfg = Release|Any CPU
+		{182A73FA-CF43-4B10-9072-F2EC18C6368C}.Release|x64.Build.0 = Release|Any CPU
+		{182A73FA-CF43-4B10-9072-F2EC18C6368C}.Release|x86.ActiveCfg = Release|Any CPU
+		{182A73FA-CF43-4B10-9072-F2EC18C6368C}.Release|x86.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{182A73FA-CF43-4B10-9072-F2EC18C6368C} = {6D017F5D-FBB3-45F2-96F7-26C420058998}
 	EndGlobalSection
 EndGlobal

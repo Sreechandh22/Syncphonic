@@ -1,45 +1,49 @@
-using System.Data.SQLite;
+using System;
+using System.Collections.Generic;
+using Microsoft.Data.Sqlite;
 
 namespace ClipboardManager.Database
 {
     public class ClipboardDatabase
     {
-        private readonly string _connectionString = "Data Source=clipboard.db;Version=3;";
+        private readonly string _connectionString;
 
-        public void InitializeDatabase()
+        public ClipboardDatabase(string connectionString)
         {
-            using (var connection = new SQLiteConnection(_connectionString))
+            _connectionString = connectionString;
+            InitializeDatabase();
+        }
+
+        private void InitializeDatabase()
+        {
+            using (var connection = new SqliteConnection(_connectionString))
             {
                 connection.Open();
-                var command = new SQLiteCommand(
-                    "CREATE TABLE IF NOT EXISTS ClipboardItems (Id INTEGER PRIMARY KEY, Content TEXT, Timestamp DATETIME, IsStarred BOOLEAN)",
-                    connection);
+                var command = new SqliteCommand("CREATE TABLE IF NOT EXISTS ClipboardItems (Id INTEGER PRIMARY KEY, Content TEXT, Timestamp DATETIME, Pinned BOOLEAN)", connection);
                 command.ExecuteNonQuery();
             }
         }
 
-        public void AddItem(ClipboardItemModel item)
+        public void AddClipboardItem(string content)
         {
-            using (var connection = new SQLiteConnection(_connectionString))
+            using (var connection = new SqliteConnection(_connectionString))
             {
                 connection.Open();
-                var command = new SQLiteCommand(
-                    "INSERT INTO ClipboardItems (Content, Timestamp, IsStarred) VALUES (@Content, @Timestamp, @IsStarred)",
-                    connection);
-                command.Parameters.AddWithValue("@Content", item.Content);
-                command.Parameters.AddWithValue("@Timestamp", item.Timestamp);
-                command.Parameters.AddWithValue("@IsStarred", item.IsStarred);
+                var command = new SqliteCommand("INSERT INTO ClipboardItems (Content, Timestamp, Pinned) VALUES (@content, @timestamp, @pinned)", connection);
+                command.Parameters.AddWithValue("@content", content);
+                command.Parameters.AddWithValue("@timestamp", DateTime.Now);
+                command.Parameters.AddWithValue("@pinned", false);
                 command.ExecuteNonQuery();
             }
         }
 
-        public List<ClipboardItemModel> GetItems()
+        public List<ClipboardItemModel> GetClipboardItems()
         {
             var items = new List<ClipboardItemModel>();
-            using (var connection = new SQLiteConnection(_connectionString))
+            using (var connection = new SqliteConnection(_connectionString))
             {
                 connection.Open();
-                var command = new SQLiteCommand("SELECT * FROM ClipboardItems ORDER BY IsStarred DESC, Timestamp DESC", connection);
+                var command = new SqliteCommand("SELECT * FROM ClipboardItems ORDER BY Timestamp DESC", connection);
                 using (var reader = command.ExecuteReader())
                 {
                     while (reader.Read())
@@ -49,12 +53,24 @@ namespace ClipboardManager.Database
                             Id = reader.GetInt32(0),
                             Content = reader.GetString(1),
                             Timestamp = reader.GetDateTime(2),
-                            IsStarred = reader.GetBoolean(3)
+                            Pinned = reader.GetBoolean(3)
                         });
                     }
                 }
             }
             return items;
+        }
+
+        public void UpdateClipboardItem(ClipboardItemModel item)
+        {
+            using (var connection = new SqliteConnection(_connectionString))
+            {
+                connection.Open();
+                var command = new SqliteCommand("UPDATE ClipboardItems SET Pinned = @pinned WHERE Id = @id", connection);
+                command.Parameters.AddWithValue("@pinned", item.Pinned);
+                command.Parameters.AddWithValue("@id", item.Id);
+                command.ExecuteNonQuery();
+            }
         }
     }
 }

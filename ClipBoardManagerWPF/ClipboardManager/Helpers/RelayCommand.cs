@@ -6,9 +6,9 @@ namespace ClipboardManager.Helpers
     public class RelayCommand : ICommand
     {
         private readonly Action<object> _execute;
-        private readonly Func<object, bool> _canExecute;
+        private readonly Predicate<object> _canExecute;
 
-        public RelayCommand(Action<object> execute, Func<object, bool> canExecute = null)
+        public RelayCommand(Action<object> execute, Predicate<object> canExecute = null)
         {
             _execute = execute;
             _canExecute = canExecute;
