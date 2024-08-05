@@ -1,5 +1,0 @@
-# config/config.yaml
-
-dataset_dir: '../data/flickr30k_images/'
-logging_level: 'DEBUG'
-model_save_path: '../models/'
