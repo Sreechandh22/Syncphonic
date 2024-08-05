@@ -1,7 +1,0 @@
-C:\Users\sreec\OneDrive\Desktop\Clipboard\ClipBoardManagerWPF\ClipboardManager\obj\Debug\net5.0-windows\ClipboardManager.csproj.AssemblyReference.cache
-C:\Users\sreec\OneDrive\Desktop\Clipboard\ClipBoardManagerWPF\ClipboardManager\obj\Debug\net5.0-windows\Views\ClipboardHistoryView.baml
-C:\Users\sreec\OneDrive\Desktop\Clipboard\ClipBoardManagerWPF\ClipboardManager\obj\Debug\net5.0-windows\MainWindow.g.cs
-C:\Users\sreec\OneDrive\Desktop\Clipboard\ClipBoardManagerWPF\ClipboardManager\obj\Debug\net5.0-windows\Views\ClipboardHistoryView.g.cs
-C:\Users\sreec\OneDrive\Desktop\Clipboard\ClipBoardManagerWPF\ClipboardManager\obj\Debug\net5.0-windows\App.g.cs
-C:\Users\sreec\OneDrive\Desktop\Clipboard\ClipBoardManagerWPF\ClipboardManager\obj\Debug\net5.0-windows\ClipboardManager_MarkupCompile.cache
-C:\Users\sreec\OneDrive\Desktop\Clipboard\ClipBoardManagerWPF\ClipboardManager\obj\Debug\net5.0-windows\ClipboardManager_MarkupCompile.lref
